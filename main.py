@@ -68,7 +68,47 @@ class EasyTasks:
 
     @staticmethod
     def km_to_miles(km):
-        return f'{km} km is { round(km * (1 / 1.609344), 3) } miles'
+        return f'{km} km is {round(km * (1 / 1.609344), 3)} miles'
+
+    @staticmethod
+    def strlen(string):
+        return f'length of "{string}" is {len(string)} symbols'
+
+    @staticmethod
+    def asc_sort_list(data_list, reverse=False):
+        return sorted(data_list, reverse=reverse)
+
+    @staticmethod
+    def vowels_count(string):
+        vowels_en = ['a', 'e', 'i', 'o', 'u', 'y']
+        return sum(string.lower().count(letter) for letter in vowels_en)
+
+    @staticmethod
+    def second_largest_in_list(data_list):
+        if not (all(isinstance(item, (int, float)) for item in data_list)):
+            return 'only Int or Float allowed'
+        if len(data_list) < 2:
+            return 'List must contain at least two numbers'
+        unique_nums = set(data_list)
+        return max(unique_nums) if len(unique_nums) == 1 else sorted(unique_nums)[-2]
+
+    @staticmethod
+    def is_prime_number(number):
+        return number > 1 and all(number % i != 0 for i in range(2, int(number ** 0.5) + 1))
+
+    @staticmethod
+    def find_gcd(a, b):
+        while b:
+            a, b = b, a % b
+        return a
+
+    @staticmethod
+    def find_fibonacci(number):
+        a, b, res = 0, 1, ""
+        while a <= number:
+            res += f'{a} '
+            a, b = b, a + b
+        return res
 
     def __init__(self):
         print(
@@ -86,6 +126,13 @@ class EasyTasks:
             + f'{self.get_rand_number()}\n'
             + f'{self.c_to_f(21)}\n'
             + f'{self.km_to_miles(21)}\n'
+            + f'{self.strlen("some kind of string")}\n'
+            + f'{self.asc_sort_list([5, 3, 2, 1])}\n'
+            + f'{self.vowels_count("aAbB")}\n'
+            + f'{self.second_largest_in_list([1, 2, 3, 22, 21, 5])}\n'
+            + f'{self.is_prime_number(5)}\n'
+            + f'{self.find_gcd(24, 36)}\n'
+            + f'{self.find_fibonacci(100)}\n'
         )
 
 
