@@ -206,7 +206,7 @@ class HardTasks:
         print('hard tasks!')
 
 
-class MainController(EasyTasks, MediumTasks, HardTasks):
+class MainController():
 
     def __init__(self):
         try:
